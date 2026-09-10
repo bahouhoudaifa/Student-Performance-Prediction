@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prédiction de l'indice de Performance</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0; /* Gris clair pour le fond */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .main-title {
+            font-size: 2em;
+            color: #000; /* Noir pour le texte */
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: 'Georgia', serif; /* Exemple de police : Georgia */
+        }
+
+        .container {
+            background-color: #ffffff; /* Blanc pour le fond du formulaire */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            font-size: 1.8em;
+            color: #000; /* Noir pour le texte du titre */
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #333; /* Bordure grise foncée */
+            padding-bottom: 10px;
+        }
+
+        label {
+            font-size: 1em;
+            color: #000; /* Noir pour les étiquettes */
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #666; /* Gris foncé pour les bordures */
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        input:focus {
+            border-color: #000; /* Noir au focus */
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #000; /* Noir pour le fond du bouton */
+            color: #fff; /* Blanc pour le texte */
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #333; /* Gris foncé au survol */
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9; /* Gris très clair pour le fond */
+            border: 1px solid #ddd; /* Gris clair pour la bordure */
+            border-radius: 5px;
+            color: #000; /* Noir pour le texte */
+            font-size: 1.1em;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            button {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="main-title">Analyse de la performance de l'étudiant</h1>
+
+    <div class="container">
+        <h1>Prédiction de l'indice de Performance</h1>
+
+        <form method="POST">
+            <label for="hours_studied">Heures étudiées :</label>
+            <input type="number" name="hours_studied" id="hours_studied" required>
+
+            <label for="previous_scores">Scores précédents :</label>
+            <input type="number" name="previous_scores" id="previous_scores" required>
+
+            <label for="extracurricular_activities">Activités extrascolaires :</label>
+            <input type="number" name="extracurricular_activities" id="extracurricular_activities" required>
+
+            <label for="sleep_hours">Heures de sommeil :</label>
+            <input type="number" name="sleep_hours" id="sleep_hours" required>
+
+            <label for="sample_question_papers">Nombre de questions pratiqués :</label>
+            <input type="number" name="sample_question_papers" id="sample_question_papers" required>
+
+            <button type="submit">Prédire l'indice de Performance</button>
+        </form>
+
+        {% if result %}
+            <div class="result">
+                <h2>{{ result }}/100</h2>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
